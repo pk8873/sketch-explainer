@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Sketch Explainer — Free YouTube Video Generator</title>
+<meta name="description" content="Generate 2-5 minute pencil-sketch explainer videos from a topic. Free and self-hosted." />
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+<main>
+  <header>
+    <h1>✏️ Sketch Explainer</h1>
+    <p>Turn any topic into a pencil-sketch YouTube video — free.</p>
+  </header>
+
+  <form id="gen-form">
+    <label>
+      Topic
+      <input name="topic" required maxlength="300" placeholder="e.g. How photosynthesis works" />
+    </label>
+    <div class="row">
+      <label>
+        Duration
+        <select name="duration">
+          <option value="2">2 minutes</option>
+          <option value="3" selected>3 minutes</option>
+          <option value="4">4 minutes</option>
+          <option value="5">5 minutes</option>
+        </select>
+      </label>
+      <label>
+        Voice language
+        <select name="lang">
+          <option value="en" selected>English (US)</option>
+          <option value="en-uk">English (UK)</option>
+          <option value="en-au">English (AU)</option>
+          <option value="hi">Hindi</option>
+          <option value="es">Spanish</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="pt">Portuguese</option>
+          <option value="id">Indonesian</option>
+        </select>
+      </label>
+    </div>
+    <button type="submit">Generate video</button>
+  </form>
+
+  <section id="status" hidden>
+    <h2>Progress</h2>
+    <p id="status-text">Starting…</p>
+    <progress id="bar" value="0" max="100"></progress>
+    <details><summary>Script preview</summary><pre id="script-preview"></pre></details>
+  </section>
+
+  <section id="result" hidden>
+    <h2>Your video is ready 🎉</h2>
+    <video id="player" controls></video>
+    <a id="download" class="btn" download>Download MP4</a>
+    <p class="tip">Upload it to your YouTube channel and grow 🚀</p>
+  </section>
+
+  <section id="error" hidden>
+    <h2>Something went wrong</h2>
+    <pre id="error-text"></pre>
+  </section>
+
+  <footer>
+    <p>Open source • Flask + gTTS + OpenCV + MoviePy • Deployed on Render</p>
+  </footer>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
