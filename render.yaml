@@ -9,7 +9,3 @@ services:
         sync: false
       - key: PORT
         value: 10000
-    disk:
-      name: output
-      mountPath: /app/output
-      sizeGB: 1
